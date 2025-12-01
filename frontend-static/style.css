@@ -1,0 +1,17 @@
+/* Glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+}
+
+.dark .glass {
+    background: rgba(18, 6, 6, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Base font */
+body {
+    font-family: 'Inter', Arial, sans-serif;
+}
