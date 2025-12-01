@@ -1,209 +1,166 @@
-# 🚨 **FraudShield AI — Real-Time Fraud Detection System**
+# 🚨 **FraudShield AI – Real-Time Fraud Detection Dashboard**
 
-### Built with FastAPI • Machine Learning • RAG • Tailwind • Vanilla JavaScript • Chart.js
-
-FraudShield AI is a **real-time fraud detection platform** designed to simulate financial transaction monitoring.
-It continuously generates synthetic transactions, analyzes them using **ML rules + RAG-based reasoning**, and updates a **live dashboard** with alerts, risk scores, charts, and downloadable reports.
+FraudShield AI is a real-time fraud monitoring system powered by **FastAPI**, **Python ML streaming**, and a responsive **TailwindCSS dashboard**.
+It continuously generates transactions, analyzes fraud risks using heuristic rules, and displays insights on a live dashboard.
 
 ---
 
-# 🌟 **Features**
+# 📌 **Features**
 
-### 🔹 **Real-Time Transaction Streaming**
+### 🔥 **Real-Time Fraud Detection**
 
-* Auto-generating transactions every 2 seconds
-* Instant risk scoring
-* Live updates without page refresh
+* Live transaction ingestion (simulated financial transactions)
+* Real-time risk scoring based on:
 
-### 🔹 **Fraud Detection Engine**
+  * Transaction amount
+  * Merchant behavior
+  * Velocity anomalies
+  * Country-risk indicators
+  * Pattern-based heuristics
 
-* Rule-based risk scoring
-* RAG (Retrieval-Augmented Generation) explanation pipeline
-* Velocity analysis, anomaly detection, country risk filtering
+### 📊 **Interactive Dashboard**
 
-### 🔹 **Interactive Front-End Dashboard**
-
-Built using **HTML + Tailwind CSS + Vanilla JavaScript + Chart.js**
-Includes:
-
-* Latest transaction card
-* Risk score trend graph
+* Dynamic fraud risk chart (last 50 transactions)
+* Latest transaction card with explanations & evidence
 * Real-time analysis summary
-* High-risk activity alerts
-* Complete transaction history table
-* Theme switcher (Light/Dark Mode)
-* PDF Report Download for each high-risk detection
+* Country flags + full country names
+* Searchable transaction history table
 
-### 🔹 **PDF Fraud Report Export**
+### 🚨 **Risk Alerts**
 
-Download a detailed fraud activity report as a PDF including:
+* High-risk events automatically logged
+* Shows critical, high, moderate, low alerts
+* Highlights country risk, amount anomalies, and velocity patterns
 
-* Merchant
-* Amount
-* Risk Score
-* Country
-* Explanation
-* Risk Summary
+
 
 ---
 
-# 📁 **Project Structure**
+# 🧱 **Project Structure**
 
 ```
-fraudshield/
-│── backend/
-│   ├── main.py                # FastAPI backend
-│   ├── transaction_generator.py
-│   ├── ml/
-│   │   ├── model.py
-│   │   ├── stream_pipeline.py  # Live stream sender
-│   ├── rag/
-│       ├── engine.py           # RAG reasoning module
+fraudshield-ai/
 │
-│── frontend-static/
-│   ├── index.html              # Main dashboard UI
-│   ├── app.js                  # Core UI logic (fetch, chart, alerts, pdf)
-│   ├── styles.css              # Custom UI styles
-│   ├── beep.mp3                # Alert sound
+├── backend/
+│   ├── main.py                  # FastAPI backend
+│   ├── models.py                # Transaction models
+│   ├── ... 
 │
-│── README.md
-│── requirements.txt
+├── ml/
+│   ├── stream_pipeline.py       # Live transaction generator
+│   ├── engine.py                # Risk scoring logic
+│
+├── frontend-static/
+│   ├── index.html               # Dashboard UI
+│   ├── app.js                   # Frontend logic
+│   ├── styles.css               # Custom styling
+│
+├── .venv/                       # Virtual environment
+├── README.md
 ```
 
 ---
 
-# 🚀 **How to Run the Project**
+# 🚀 **How to Run the Entire Project**
 
-## **1️⃣ Clone the Repository**
+## 1️⃣ **Activate Virtual Environment**
 
-```
-git clone https://github.com/ATR1285/fraudshield.git
-cd fraudshield
-```
-
----
-
-## **2️⃣ Create & Activate Virtual Environment**
-
-### Windows:
-
-```
-python -m venv .venv
+```sh
 .venv\Scripts\activate
 ```
 
-### Mac/Linux:
-
-```
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
 ---
 
-## **3️⃣ Install Dependencies**
+## 2️⃣ **Start Backend (FastAPI API)**
 
-```
-pip install -r requirements.txt
-```
-
----
-
-## **4️⃣ Start FastAPI Backend**
-
-```
+```sh
 cd backend
 uvicorn main:app --reload
 ```
 
-Backend runs at:
-👉 [http://127.0.0.1:8000](http://127.0.0.1:8000)
+Backend will run on:
+
+➡ [http://127.0.0.1:8000](http://127.0.0.1:8000)
+➡ API Docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ---
 
-## **5️⃣ Start Transaction Stream Engine**
+## 3️⃣ **Start ML Streaming Pipeline**
 
-Open a **second terminal**:
+Open a **new terminal**, run:
 
-```
-cd backend/ml
+```sh
+.venv\Scripts\activate
+cd ml
 python stream_pipeline.py
 ```
 
-This begins sending synthetic transactions to the backend API.
+This continuously sends real-time transactions to the backend.
 
 ---
 
-## **6️⃣ Start the Frontend Dashboard**
+## 4️⃣ **Start Frontend Dashboard**
 
 Open a **third terminal**:
 
-```
+```sh
 cd frontend-static
 python -m http.server 3000
 ```
 
-Then open:
+Dashboard opens at:
 
 👉 [http://localhost:3000/index.html](http://localhost:3000/index.html)
 
 ---
 
-# 📊 **Dashboard Preview**
+# 🖼 **Screenshots**
 
-### 🔹 Live Risk Score Trend
+### 💻 Dashboard Overview
 
-Displays last 50 transactions
-
-### 🔹 Real-time Fraud Indicators
-
-* Cross-border flag
-* Velocity spike
-* High amount threshold
-* Country risk
-
-### 🔹 High-Risk Activity Log
-
-Automatic detection
-
-### 🔹 PDF Report Download
-
-Generates per-transaction fraud summary
+(You can upload screenshots to GitHub later)
 
 ---
 
-# 🔧 **Tech Stack**
+# 🧪 **Tech Stack**
 
-| Component          | Technology                     |
-| ------------------ | ------------------------------ |
-| **Backend**        | FastAPI, Python                |
-| **ML**             | Rule-based Scoring + RAG       |
-| **Frontend**       | HTML, Tailwind CSS, Vanilla JS |
-| **Charts**         | Chart.js                       |
-| **PDF Export**     | jsPDF                          |
-| **Alerting**       | Audio cue + UI badge           |
-| **Data Streaming** | Python generators              |
-
----
-
-# 👥 **Team Members**
-
-| Name          | Role                         |
-| ------------- | ---------------------------- |
-| ATR (Richard) | Frontend, UI/UX, Integration |
-| Akil          | RAG + Reasoning Engineer     |
-| Nirajan s P   | Backend API                  |
-| Raman p       | ML Streaming Pipeline        |
+| Layer         | Technology              |
+| ------------- | ----------------------- |
+| Backend API   | FastAPI + Pydantic      |
+| ML Stream     | Python + Risk Engine    |
+| Frontend      | HTML + TailwindCSS + JS |
+| Visualization | Chart.js                |
+| Reporting     | jsPDF                   |
+| Hosting       | Runs locally            |
 
 ---
 
-# 🛡️ **Future Enhancements**
+# 🧠 **Risk Scoring Logic**
 
-* AI-based anomaly detection (ML model)
-* User authentication system
-* Multi-merchant filtering
-* Email/SMS fraud alerts
-* Historical charts & monthly insights
+Fraud risk score is derived from:
+
+* High-value transactions
+* Cross-border & high-risk countries
+* Merchant category anomalies
+* Velocity-based patterns
+* Explanation labels + evidence
+
+Scores range: **0 (safe) → 100+ (fraud likely)**
 
 ---
 
+
+
+# 🙌 **Contributions**
+
+Pull requests are welcome!
+Please open an issue first for major feature discussions.
+
+---
+
+# 📜 **License**
+
+MIT License (add LICENSE file if required)
+
+
+Would you like those?
